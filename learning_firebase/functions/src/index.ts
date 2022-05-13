@@ -29,4 +29,5 @@ postagemExpress.get('/excluirPostagem', (req, res) => postagemService.excluirPos
 postagemExpress.get('/excluirComentario', (req, res) => postagemService.excluirComentario(req,res))
 postagemExpress.get('/darLikePost', (req, res) => postagemService.darLikePost(req,res))
 postagemExpress.get('/removerLikePost', (req, res) => postagemService.removerLikePost(req,res))
+
 export const feed = functions.https.onRequest(postagemExpress); 
