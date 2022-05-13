@@ -25,4 +25,8 @@ const postagemService = new PublicationService(db);
 
 postagemExpress.get('/manterPublicacao', (req, res) => postagemService.manterPostagem(req,res))
 postagemExpress.get('/comentarPost', (req, res) => postagemService.comentaPublicacao(req,res))
+postagemExpress.get('/excluirPostagem', (req, res) => postagemService.excluirPostagem(req,res))
+postagemExpress.get('/excluirComentario', (req, res) => postagemService.excluirComentario(req,res))
+postagemExpress.get('/darLikePost', (req, res) => postagemService.darLikePost(req,res))
+postagemExpress.get('/removerLikePost', (req, res) => postagemService.removerLikePost(req,res))
 export const feed = functions.https.onRequest(postagemExpress); 
