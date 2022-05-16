@@ -137,4 +137,18 @@ export class PublicationService {
         }
     }
 
+    public listaPublicacoes(request: Request, response: Response) {
+        this.db.collection('publicacoes').get()
+        .then(postagemSnap => {
+            const listaPublicacoes: Publication[] = [];
+            postagemSnap.forEach(postSnap => {
+                listaPublicacoes.push(Publication.toPublication(postSnap.data()));
+            });
+            HttpUtil.success(listaPublicacoes, response);
+        })
+        .catch(error => {
+            HttpUtil.error('Ocorreu um erro ao consultar publicações!: ' + error, response);
+        });
+    }
+
 }
