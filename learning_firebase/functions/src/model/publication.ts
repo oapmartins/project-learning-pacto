@@ -30,7 +30,7 @@ export class Publication {
     }
 
     static toPublication(json: any = {}): Publication {
-        return new Publication(json.id, json.conteudo, json.dataPostagem, UserModel.toUserModel(json.criador), json.likes, json.comentarios);
+        return new Publication(json.id, json.conteudo, new Date(json.dataPostagem), UserModel.toUserModel(json.criador), json.likes, json.comentarios);
     }
 
     public toJson(): any {

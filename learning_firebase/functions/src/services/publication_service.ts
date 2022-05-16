@@ -138,7 +138,7 @@ export class PublicationService {
     }
 
     public listaPublicacoes(request: Request, response: Response) {
-        this.db.collection('publicacoes').get()
+        this.db.collection('publicacoes').orderBy("dataPostagem", 'desc').get()
         .then(postagemSnap => {
             const listaPublicacoes: Publication[] = [];
             postagemSnap.forEach(postSnap => {
