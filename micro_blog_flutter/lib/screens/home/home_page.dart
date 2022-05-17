@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:micro_blog_flutter/controllers/feed/feed_controller.dart';
+import 'package:micro_blog_flutter/util/enum_status_consulta.dart';
 import 'package:micro_blog_flutter/util/widget/custom_button.dart';
 import 'package:micro_blog_flutter/util/widget/custom_textField.dart';
 import 'package:micro_blog_flutter/util/widget/util_dialog.dart';
@@ -84,7 +85,42 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
-              )
+              ),
+              Observer(
+                // ignore: missing_return
+                builder: (_) {
+                  switch (_feedController.mStatusConsultaFeed) {
+                    case StatusConsulta.CARREGANDO:
+                      return Text('Aguarde, estou consultando!');
+                      break;
+                    case StatusConsulta.SUCESSO:
+                      return ListView.builder(
+                        itemBuilder: (context, index) {
+                          var post = _feedController.mPostagens[index];
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('${post.criador.name}'),
+                                  Divider(),
+                                  Text('${post.conteudo}'),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        itemCount: _feedController.mPostagens.length,
+                        shrinkWrap: true,
+                      );
+                      break;
+                    case StatusConsulta.FALHA:
+                      return Text('Ops, não consegui carregar!');
+                      break;
+                  }
+                },
+              ),
             ],
           ),
         ),

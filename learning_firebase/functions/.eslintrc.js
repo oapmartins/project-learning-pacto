@@ -25,7 +25,12 @@ module.exports = {
     "import",
   ],
   rules: {
-    "quotes": ["error", "double"],
     "import/no-unresolved": 0,
+    "no-unused-vars": "off",
+    "object-curly-spacing": "off",
+    "require-jsdoc": "off",
+    "quotes": ["error", "double"],
+    "max-len": ["error", {"code": 6000}],
+
   },
 };

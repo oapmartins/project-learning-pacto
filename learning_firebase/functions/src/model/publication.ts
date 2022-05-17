@@ -8,7 +8,6 @@ export class Publication {
     likes?: UserModel[];
     comentarios?: Comentario[];
 
-
     constructor(
         id?: string,
         conteudo?: string,
