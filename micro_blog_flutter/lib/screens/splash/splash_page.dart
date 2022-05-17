@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:micro_blog_flutter/controllers/user/user_controller.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key key}) : super(key: key);
@@ -8,6 +10,24 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    Future.delayed(Duration(seconds: 2)).then(
+      (value) => {
+        GetIt.I.get<UserController>().verifyExistsUser(
+          existsUser: () {
+            Navigator.pushReplacementNamed(context, '/homePage');
+          },
+          dontExistsUser: () {
+            Navigator.pushReplacementNamed(context, '/loginPage');
+          },
+        )
+      },
+    );
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

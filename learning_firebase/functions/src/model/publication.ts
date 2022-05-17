@@ -1,8 +1,8 @@
-import { UserModel } from "./user_model";
+import {UserModel} from "./user_model";
 
 export class Publication {
-    id?: String;
-    conteudo?: String;
+    id?: string;
+    conteudo?: string;
     dataPostagem?: Date;
     criador?: UserModel;
     likes?: UserModel[];
@@ -10,57 +10,56 @@ export class Publication {
 
 
     constructor(
-        id?: String,
-        conteudo?: String,
+        id?: string,
+        conteudo?: string,
         dataPostagem?: Date,
         criador?: UserModel,
         likes?: UserModel[],
         comentarios?: Comentario[],
     ) {
-        this.id = id;
-        this.conteudo = conteudo;
-        this.dataPostagem = dataPostagem;
-        this.criador = criador;
-        this.likes = likes;
-        this.comentarios = comentarios;
+      this.id = id;
+      this.conteudo = conteudo;
+      this.dataPostagem = dataPostagem;
+      this.criador = criador;
+      this.likes = likes;
+      this.comentarios = comentarios;
     }
 
-    public isValid(): boolean{
-        return this.conteudo !== undefined && this.criador !== undefined;
+    public isValid(): boolean {
+      return this.conteudo !== undefined && this.criador !== undefined;
     }
 
     static toPublication(json: any = {}): Publication {
-        return new Publication(json.id, json.conteudo, new Date(json.dataPostagem), UserModel.toUserModel(json.criador), json.likes, json.comentarios);
+      return new Publication(json.id, json.conteudo, new Date(json.dataPostagem), UserModel.toUserModel(json.criador), json.likes, json.comentarios);
     }
 
     public toJson(): any {
-        return JSON.parse(JSON.stringify(this));
+      return JSON.parse(JSON.stringify(this));
     }
 }
 
 export class Comentario {
-
-    id?: String;
+    id?: string;
     criador?: UserModel;
-    comentario?: String;
+    comentario?: string;
     dataComentario?: Date;
 
-    constructor(criador?: UserModel, comentario?: String, dataComentario?: Date, id?: String) {
-        this.criador = criador;
-        this.comentario = comentario;
-        this.dataComentario = dataComentario;
-        this.id = id;
+    constructor(criador?: UserModel, comentario?: string, dataComentario?: Date, id?: string) {
+      this.criador = criador;
+      this.comentario = comentario;
+      this.dataComentario = dataComentario;
+      this.id = id;
     }
 
-    public isValid(): boolean{
-        return this.criador !== undefined && this.comentario != undefined && this.comentario != '';
+    public isValid(): boolean {
+      return this.criador !== undefined && this.comentario != undefined && this.comentario != "";
     }
 
     static toComentario(json: any): Comentario {
-        return new Comentario(UserModel.toUserModel(json.criador), json.comentario, json.dataComentario);
+      return new Comentario(UserModel.toUserModel(json.criador), json.comentario, json.dataComentario);
     }
 
     public toJson(): any {
-        return JSON.parse(JSON.stringify(this));
+      return JSON.parse(JSON.stringify(this));
     }
 }
