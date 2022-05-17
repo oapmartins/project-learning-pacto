@@ -38,16 +38,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 Divider(),
                 CustomTextField(
                   title: 'E-mail',
-                  onChanged: (value) => _user.email,
+                  onChanged: (value) => _user.email = value,
                 ),
                 CustomTextField(
                   title: 'Nome',
-                  onChanged: (value) => _user.name,
+                  onChanged: (value) => _user.name = value,
                 ),
                 CustomTextField(
                   title: 'Senha',
                   obscureText: true,
-                  onChanged: (value) => _user.password,
+                  onChanged: (value) => _user.password = value,
                 ),
                 SizedBox(
                   height: 10,

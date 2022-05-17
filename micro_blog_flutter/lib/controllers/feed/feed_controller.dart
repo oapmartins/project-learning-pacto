@@ -33,6 +33,7 @@ abstract class FeedControllerBase with Store {
       mPostagens.clear();
       mPostagens.addAll(responsePublicacoes.success);
       mStatusConsultaFeed = StatusConsulta.SUCESSO;
+      success?.call();
     }).catchError((onError) {
       mStatusConsultaFeed = StatusConsulta.FALHA;
       error?.call(onError.response.data['error']);

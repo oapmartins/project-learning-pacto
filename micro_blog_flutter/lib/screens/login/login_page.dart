@@ -51,16 +51,17 @@ class _LoginPageState extends State<LoginPage> {
                 CustomButton(
                   title: 'Entrar',
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/homePage');
-
                     _userController.userLogin(
                       _user,
                       success: () {
                         Navigator.pushReplacementNamed(context, '/homePage');
                       },
                       error: (message) {
-                        UtilDialog.exibirInformacao(context,
-                            titulo: 'Ops!', mensagem: message);
+                        UtilDialog.exibirInformacao(
+                          context,
+                          titulo: 'Ops!',
+                          mensagem: message,
+                        );
                       },
                     );
                   },

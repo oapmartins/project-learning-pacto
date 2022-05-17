@@ -40,7 +40,8 @@ abstract class UserControllerBase with Store {
     }
     mService.userRegister(userRegister).then((user) {
       _prefs.then((db) {
-        db.setString('user', jsonEncode(user.toJson()));
+        db.setString('user', jsonEncode(user.success.toJson()));
+        mUserLoged = user.success;
         success?.call();
       });
     }).catchError((error) {
@@ -59,11 +60,12 @@ abstract class UserControllerBase with Store {
     } else {
       mService.userLogin(userLogin.email, userLogin.password).then((user) {
         _prefs.then((db) {
-          db.setString('user', jsonEncode(user.toJson()));
+          db.setString('user', jsonEncode(user.success.toJson()));
+          mUserLoged = user.success;
           success?.call();
         });
-      }).catchError((error) {
-        error?.call(error.message);
+      }).catchError((responseError) {
+        error?.call(responseError.response.data["error"]);
       });
     }
   }
