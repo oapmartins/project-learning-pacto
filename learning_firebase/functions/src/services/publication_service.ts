@@ -18,7 +18,7 @@ export class PublicationService {
 
       const postagem = Publication.toPublication(request.body);
       if (postagem.isValid()) {
-        if (postagem.id == undefined) {
+        if (postagem.id == undefined || postagem.id === null || postagem.id === "null") {
           postagem.id = this.db.collection("x").doc().id;
           postagem.dataPostagem = new Date();
         } else {

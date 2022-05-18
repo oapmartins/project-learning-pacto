@@ -27,7 +27,7 @@ class UtilPublishReturn {
 
 @JsonSerializable()
 class UtilPostReturn {
-  List<PublishModel> success;
+  PublishModel success;
   UtilPostReturn({this.success});
 
   factory UtilPostReturn.fromJson(Map<String, dynamic> json) =>

@@ -35,10 +35,9 @@ Map<String, dynamic> _$UtilPublishReturnToJson(UtilPublishReturn instance) =>
 
 UtilPostReturn _$UtilPostReturnFromJson(Map<String, dynamic> json) {
   return UtilPostReturn(
-    success: (json['success'] as List)
-        ?.map((e) =>
-            e == null ? null : PublishModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    success: json['success'] == null
+        ? null
+        : PublishModel.fromJson(json['success'] as Map<String, dynamic>),
   );
 }
 

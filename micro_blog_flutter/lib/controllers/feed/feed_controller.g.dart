@@ -17,26 +17,59 @@ mixin _$FeedController on FeedControllerBase, Store {
           name: 'FeedControllerBase.habilitadoAPostar'))
       .value;
 
-  final _$counteudoPublciacaoAtom =
-      Atom(name: 'FeedControllerBase.counteudoPublciacao');
+  final _$mPostagensAtom = Atom(name: 'FeedControllerBase.mPostagens');
 
   @override
-  String get counteudoPublciacao {
-    _$counteudoPublciacaoAtom.reportRead();
-    return super.counteudoPublciacao;
+  ObservableList<PublishModel> get mPostagens {
+    _$mPostagensAtom.reportRead();
+    return super.mPostagens;
   }
 
   @override
-  set counteudoPublciacao(String value) {
-    _$counteudoPublciacaoAtom.reportWrite(value, super.counteudoPublciacao, () {
-      super.counteudoPublciacao = value;
+  set mPostagens(ObservableList<PublishModel> value) {
+    _$mPostagensAtom.reportWrite(value, super.mPostagens, () {
+      super.mPostagens = value;
+    });
+  }
+
+  final _$mStatusConsultaFeedAtom =
+      Atom(name: 'FeedControllerBase.mStatusConsultaFeed');
+
+  @override
+  StatusConsulta get mStatusConsultaFeed {
+    _$mStatusConsultaFeedAtom.reportRead();
+    return super.mStatusConsultaFeed;
+  }
+
+  @override
+  set mStatusConsultaFeed(StatusConsulta value) {
+    _$mStatusConsultaFeedAtom.reportWrite(value, super.mStatusConsultaFeed, () {
+      super.mStatusConsultaFeed = value;
+    });
+  }
+
+  final _$counteudoPublicacaoAtom =
+      Atom(name: 'FeedControllerBase.counteudoPublicacao');
+
+  @override
+  String get counteudoPublicacao {
+    _$counteudoPublicacaoAtom.reportRead();
+    return super.counteudoPublicacao;
+  }
+
+  @override
+  set counteudoPublicacao(String value) {
+    _$counteudoPublicacaoAtom.reportWrite(value, super.counteudoPublicacao, () {
+      super.counteudoPublicacao = value;
     });
   }
 
   @override
   String toString() {
     return '''
-counteudoPublciacao: ${counteudoPublciacao},
+mPostagens: ${mPostagens},
+mStatusConsultaFeed: ${mStatusConsultaFeed},
+counteudoPublicacao: ${counteudoPublicacao},
 habilitadoAPostar: ${habilitadoAPostar}
     ''';
   }

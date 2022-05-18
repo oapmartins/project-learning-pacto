@@ -186,13 +186,12 @@ class _ServicesMicroBlog implements ServicesMicroBlog {
   }
 
   @override
-  Future<UtilPostReturn> removePost(id) async {
+  Future<String> removePost(id) async {
     ArgumentError.checkNotNull(id, 'id');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'id': id};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/excluirPostagem',
+    final _result = await _dio.request<String>('/feed/excluirPostagem',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -200,7 +199,7 @@ class _ServicesMicroBlog implements ServicesMicroBlog {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = UtilPostReturn.fromJson(_result.data);
+    final value = _result.data;
     return value;
   }
 

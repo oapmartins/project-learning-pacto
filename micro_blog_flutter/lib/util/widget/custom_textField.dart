@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final Function(String text) onChanged;
-  final String title;
+  final String title, value;
   final bool obscureText;
 
   const CustomTextField({
@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.title,
     this.obscureText = false,
+    this.value,
   }) : super(key: key);
 
   @override
@@ -30,6 +31,7 @@ class CustomTextField extends StatelessWidget {
           child: TextField(
             onChanged: onChanged,
             obscureText: obscureText,
+            controller: TextEditingController(text: value ?? ''),
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.0),

@@ -18,7 +18,7 @@ abstract class UserControllerBase with Store {
     _prefs.then((db) {
       var userJson = db.getString('user');
       if (userJson != null) {
-        mUserLoged = UserModel.fromJson(jsonDecode(userJson));
+        mUserLoged = UserModel.fromJson(jsonDecode(userJson)['success']);
         existsUser?.call();
       } else {
         dontExistsUser?.call();

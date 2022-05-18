@@ -26,6 +26,7 @@ dependencies:
   intl: ^0.16.1
   dio: any
   shared_preferences: any
+  after_layout: any
   mobx: ^1.0.2+2
   flutter_mobx: ^1.0.1
   google_fonts: ^0.4.0

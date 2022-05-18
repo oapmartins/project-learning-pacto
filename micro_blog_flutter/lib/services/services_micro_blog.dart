@@ -50,7 +50,7 @@ abstract class ServicesMicroBlog {
   );
 
   @GET("/feed/excluirPostagem")
-  Future<UtilPostReturn> removePost(
+  Future<String> removePost(
     @Query('id') String id,
   );
 
